@@ -1,0 +1,33 @@
+// Copyrigth 2025 Google LLC.
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package image_conversion;
+
+option go_package = "./imageconversionpb";
+
+message Image {
+  bytes data = 1; // Image data as bytes
+  string format = 2; // Image format (e.g., "jpeg", "png")
+}
+
+message BlackAndWhiteRequest {
+  Image image = 1;
+  float threshold = 2; // Threshold for black/white conversion (0.0 - 1.0)
+}
+
+message SepiaRequest {
+  Image image = 1;
+  float intensity = 2; // Intensity of sepia tone (0.0 - 1.0)
+}
+
+message BlurRequest {
+  Image image = 1;
+  int32 kernel_size = 2; // Size of the blur kernel (e.g., 3, 5, 7)
+}
+
+service ImageConverter {
+  rpc BlackAndWhite (BlackAndWhiteRequest) returns (Image);
+  rpc Sepia (SepiaRequest) returns (Image);
+  rpc Blur (BlurRequest) returns (Image);
+}

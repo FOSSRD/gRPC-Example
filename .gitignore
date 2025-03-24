@@ -1,0 +1,7 @@
+servit/venv/
+servit/*_pb2.py
+servit/*.pyi
+servit/*_pb2_grpc.py
+imager/*.pb.go
+imager/*_grpc.pb.go
+imager/go.sum
